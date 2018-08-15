@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(
                         new AntPathRequestMatcher("/logout")
                 )
+                .logoutSuccessUrl("/login").permitAll().permitAll()
                 .and()
                 .httpBasic();
         http
@@ -58,9 +59,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             throws Exception{
         auth.userDetailsService(userDetailsServiceBean()).passwordEncoder(encoder());
     }
-//    @SuppressWarnings("deprecation")
-//    @Bean
-//    public static NoOpPasswordEncoder passwordEncoder(){
-//        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-//    }
 }
